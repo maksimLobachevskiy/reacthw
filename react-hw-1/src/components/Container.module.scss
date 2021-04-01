@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    
+}
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 16px;
+    background-color: #d64531;
+    color: white;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .modalHeader2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 16px;
+    background-color:#2e7d32;
+    color: white;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .modalBody {
+    text-align: center;
+    padding: 15px 16px;
+    background-color: #e94b35;
+    color: #fff;
+    border-radius: 0 0 5px 5px;
+  }
+  .modalBody2 {
+    text-align: center;
+    padding: 15px 16px;
+    background-color: #43a047;
+    color: #fff;
+    border-radius: 0 0 5px 5px;
+  }
