@@ -1,0 +1,25 @@
+.modalContent {
+  z-index: 99999;
+  position: absolute;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.modalClose {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
