@@ -10,7 +10,6 @@ class Product extends React.Component {
   state = {
     favIconActive: false,
     iconColor: "black",
-    favProducts: [],
   };
 
   addToCart = () => {
