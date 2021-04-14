@@ -5,6 +5,9 @@ const useStyles = createUseStyles({
   modalBtn: {
     margin: 16,
     backgroundColor: (props) => props.color,
+    "&:hover": {
+      backgroundColor: (props) => props.hoverColor,
+    },
     padding: 15,
     color: "white",
     border: "none",
