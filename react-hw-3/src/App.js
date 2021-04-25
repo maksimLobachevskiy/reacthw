@@ -7,6 +7,7 @@ import Button from "./components/button/Button";
 const App = () => {
   const [items, setItems] = useState([]);
   const [currentId, setIcurrentId] = useState([]);
+  const [currentName, setCurrentName] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [modalShowCart, setModalShowCart] = useState(false);
   const [productsCart, setProductsCart] = useState(
@@ -73,6 +74,7 @@ const App = () => {
     const newCard = items.filter((card) => card.sku === id);
     const [{ ...addToCard }] = newCard;
     setIcurrentId(addToCard.sku);
+    setCurrentName(addToCard.name);
   };
 
   const openDeleteModal = (id) => {
@@ -105,9 +107,9 @@ const App = () => {
         <Modal
           modalOne={true}
           onClick={modalClose}
-          header={"Adding to cart"}
+          header={currentName}
           closeButton={true}
-          text={"The item has been successfully added to the cart"}
+          text={`${currentName} has been successfully added to the cart`}
           actions={
             <>
               <Button
