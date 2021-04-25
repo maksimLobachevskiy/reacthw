@@ -9,21 +9,28 @@ import Button from "../button/Button";
 class Product extends React.Component {
   state = {
     favIconActive: false,
-    iconColor: "black",
+    iconColor: "",
+    favorite: JSON.parse(localStorage.getItem("Favorites")) || [],
   };
 
   addToCart = () => {
     this.props.onClick();
-    localStorage.setItem(this.props.card.name, this.props.card.sku);
+    localStorage.setItem("Cart", this.props.card.sku);
   };
 
-  addToFavourites = () => {
-    if (this.state.favIconActive) {
-      this.setState({ favIconActive: false });
-      localStorage.removeItem(this.props.card.sku, this.props.card.sku);
+  addToFavorite = (id) => {
+    if (!this.state.favorite.includes(id)) {
+      this.setState({
+        favorite: this.state.favorite.concat(id),
+        iconColor: "orange",
+      });
     } else {
-      this.setState({ favIconActive: true });
-      localStorage.setItem(this.props.card.sku, this.props.card.sku);
+      let index = this.state.favorite.indexOf(id);
+      let temp = [
+        ...this.state.favorite.slice(0, index),
+        ...this.state.favorite.slice(index + 1),
+      ];
+      this.setState({ favorite: temp, iconColor: "black" });
     }
   };
 
@@ -39,11 +46,8 @@ class Product extends React.Component {
         </div>
         <span className={styles.color}>Color: {color}</span>
         <span className={styles.price}>Price: {price} $</span>
-        <span className={styles.fav} onClick={this.addToFavourites}>
-          <FontAwesomeIcon
-            icon={faStar}
-            color={localStorage.getItem(JSON.parse(sku)) ? "orange" : "black"}
-          />
+        <span className={styles.fav} onClick={() => this.addToFavorite(sku)}>
+          <FontAwesomeIcon icon={faStar} color={this.state.iconColor} />
         </span>
         <span>SKU: {sku}</span>
         <Button text="Add to cart" color={"black"} onClick={this.addToCart} />

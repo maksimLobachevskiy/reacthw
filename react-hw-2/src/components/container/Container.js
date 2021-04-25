@@ -10,10 +10,6 @@ export default class Container extends React.Component {
     this.state = {
       items: [],
       isShown: false,
-      text: "",
-      btnColor: "",
-      modalHeader: "",
-      modalBody: "",
       modalClose: false,
     };
   }
@@ -21,9 +17,6 @@ export default class Container extends React.Component {
   showModal = () => {
     this.setState({
       isShown: true,
-      btnColor: "#a54821",
-      modalHeader: styles.modalHeader,
-      modalBody: styles.modalBody,
       modalClose: true,
     });
   };
@@ -51,8 +44,8 @@ export default class Container extends React.Component {
           <Modal
             handleOutsideClick={this.hideModal}
             modalClose={this.state.modalClose}
-            modalHeader={this.state.modalHeader}
-            modalBody={this.state.modalBody}
+            modalHeader={styles.modalHeader}
+            modalBody={styles.modalBody}
             text={"The item has been successfully added to the cart"}
             header={"This Product was Added to cart"}
             show={this.state.show}
@@ -60,7 +53,7 @@ export default class Container extends React.Component {
             okBtn={
               <Button
                 text="Continue shopping"
-                color={this.state.btnColor}
+                color="#a54821"
                 onClick={this.hideModal}
               />
             }
