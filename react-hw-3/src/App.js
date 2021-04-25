@@ -9,8 +9,14 @@ const App = () => {
   const [currentId, setIcurrentId] = useState([]);
   const [modalShow, setModalShow] = useState(false);
   const [modalShowCart, setModalShowCart] = useState(false);
-  const [productsCart, setProductsCart] = useState([]);
-  const [productsFavorites, setProductsFavorites] = useState([]);
+  const [productsCart, setProductsCart] = useState(
+    localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
+  );
+  const [productsFavorites, setProductsFavorites] = useState(
+    localStorage.getItem("favorites")
+      ? JSON.parse(localStorage.getItem("favorites"))
+      : []
+  );
 
   useEffect(() => {
     fetch("./products.json")
@@ -23,6 +29,10 @@ const App = () => {
       const newCard = items.filter((card) => card.sku === currentId);
       const [{ ...addToCard }] = newCard;
       setProductsCart([...productsCart, addToCard]);
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...productsCart, addToCard])
+      );
       setModalShow(false);
     }
   };
@@ -32,18 +42,30 @@ const App = () => {
       const newCard = items.filter((card) => card.sku === id);
       const [{ ...addToFavorite }] = newCard;
       setProductsFavorites([...productsFavorites, addToFavorite]);
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify([...productsFavorites, addToFavorite])
+      );
     }
   };
 
   const deleteProduct = (currentId) => {
     setProductsCart([...productsCart.filter((card) => card.sku !== currentId)]);
     setModalShowCart(false);
+    localStorage.setItem(
+      "cart",
+      JSON.stringify([...productsCart.filter((card) => card.sku !== currentId)])
+    );
   };
 
   const deleteFavorites = (id) => {
     setProductsFavorites([
       ...productsFavorites.filter((card) => card.sku !== id),
     ]);
+    localStorage.setItem(
+      "favorites",
+      JSON.stringify([...productsFavorites.filter((card) => card.sku !== id)])
+    );
   };
 
   const openModal = (id) => {

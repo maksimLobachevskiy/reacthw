@@ -12,7 +12,7 @@ const FavIcon = (props) => {
     if (productsFavorites.find((card) => card.sku === sku)) {
       setIconActive(true);
     }
-  }, [productsFavorites]);
+  }, [productsFavorites, sku]);
 
   const iconActive = () => {
     if (!isIconActive) {
