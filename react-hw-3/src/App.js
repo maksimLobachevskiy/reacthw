@@ -13,6 +13,7 @@ const App = () => {
   const [productsCart, setProductsCart] = useState(
     localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
   );
+
   const [productsFavorites, setProductsFavorites] = useState(
     localStorage.getItem("favorites")
       ? JSON.parse(localStorage.getItem("favorites"))
@@ -109,7 +110,7 @@ const App = () => {
           onClick={modalClose}
           header={currentName}
           closeButton={true}
-          text={`${currentName} has been successfully added to the cart`}
+          text={`Do you want to buy ${currentName}?`}
           actions={
             <>
               <Button

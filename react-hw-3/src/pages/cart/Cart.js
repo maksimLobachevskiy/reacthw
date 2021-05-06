@@ -13,15 +13,17 @@ const useStyles = createUseStyles({
 });
 
 const Cart = (props) => {
-  const styles = useStyles(props);
-  const { items, page, deleteProduct } = props;
+  const styles = useStyles();
+  const { items, deleteProduct } = props;
 
   const cards = items.map((item) => (
     <Product
       card={item}
       key={item.sku}
-      page={page}
       deleteProduct={deleteProduct}
+      productsCart={items}
+      showFavIcon={false}
+      showDelBtn={true}
     />
   ));
   return <ul className={styles.producList}>{cards}</ul>;
@@ -30,7 +32,6 @@ const Cart = (props) => {
 Cart.propTypes = {
   deleteProduct: PropTypes.func,
   items: PropTypes.array,
-  page: PropTypes.string,
 };
 
 export default Cart;

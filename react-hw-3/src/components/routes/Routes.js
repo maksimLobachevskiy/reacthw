@@ -34,7 +34,7 @@ const Routes = (props) => {
                   onClick={onClick}
                   addToFavorites={addToFavorites}
                   deleteFavorites={deleteFavorites}
-                  page={props.match.path}
+                  productsCart={productsCart}
                 />
               )}
             />
@@ -42,11 +42,7 @@ const Routes = (props) => {
               exact
               path="/cart"
               render={(props) => (
-                <Cart
-                  items={productsCart}
-                  deleteProduct={deleteProduct}
-                  page={props.match.path}
-                />
+                <Cart items={productsCart} deleteProduct={deleteProduct} />
               )}
             />
             <Route
@@ -56,7 +52,6 @@ const Routes = (props) => {
                 <Favorites
                   items={productsFavorites}
                   deleteFavorites={deleteFavorites}
-                  page={props.match.path}
                   onClick={onClick}
                 />
               )}

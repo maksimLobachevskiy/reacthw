@@ -7,10 +7,10 @@ const ProductList = (props) => {
   const {
     items,
     onClick,
-    page,
     addToFavorites,
     deleteFavorites,
     productsFavorites,
+    productsCart,
   } = props;
   const cards = items.map((item) => (
     <Product
@@ -20,7 +20,9 @@ const ProductList = (props) => {
       addToFavorites={addToFavorites}
       deleteFavorites={deleteFavorites}
       productsFavorites={productsFavorites}
-      page={page}
+      productsCart={productsCart}
+      showFavIcon={true}
+      showBuyBtn={true}
     />
   ));
   return <ul className={styles.producList}>{cards}</ul>;
@@ -33,7 +35,6 @@ ProductList.propTypes = {
   addToFavorites: PropTypes.func,
   deleteFavorites: PropTypes.func,
   productsFavorites: PropTypes.array,
-  page: PropTypes.string,
 };
 
 export default ProductList;

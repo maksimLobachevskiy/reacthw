@@ -13,17 +13,18 @@ const useStyles = createUseStyles({
 });
 
 const Favorites = (props) => {
-  const { items, onClick, page, deleteFavorites } = props;
-  const styles = useStyles(props);
+  const { items, onClick, deleteFavorites } = props;
+  const styles = useStyles();
 
   const cards = items.map((item) => (
     <Product
       card={item}
       onClick={onClick}
       key={item.sku}
-      page={page}
       deleteFavorites={deleteFavorites}
       productsFavorites={items}
+      showFavIcon={true}
+      showBuyBtn={true}
     />
   ));
   return <ul className={styles.producList}>{cards}</ul>;
@@ -31,7 +32,6 @@ const Favorites = (props) => {
 Favorites.propTypes = {
   deleteFavorites: PropTypes.func,
   items: PropTypes.array,
-  page: PropTypes.string,
 };
 
 export default Favorites;

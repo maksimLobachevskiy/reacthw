@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Product.module.scss";
 import PropTypes from "prop-types";
 import FavIcon from "../favicon/Favicon";
@@ -8,12 +8,26 @@ const Product = (props) => {
   const {
     card: { name, price, imgUrl, sku, color },
     onClick,
-    page,
     deleteProduct,
     addToFavorites,
     deleteFavorites,
     productsFavorites,
+    productsCart,
+    showFavIcon,
+    showBuyBtn,
+    showDelBtn,
   } = props;
+
+  const [disabled, setDisabled] = useState(null);
+
+  useEffect(() => {
+    const productsCart = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : [];
+    if (productsCart.find((card) => card.sku === sku)) {
+      setDisabled("disabled");
+    }
+  }, [productsCart, sku]);
 
   const onBtnClick = () => {
     onClick(sku);
@@ -32,44 +46,27 @@ const Product = (props) => {
       <span className={styles.color}>Color: {color}</span>
       <span className={styles.price}>Price: {price} $</span>
       <span>SKU: {sku}</span>
-      {page === "/" && (
+      {showFavIcon && (
         <FavIcon
           sku={sku}
           name={name}
           addToFavorites={addToFavorites}
           deleteFavorites={deleteFavorites}
-          page={page}
           productsFavorites={productsFavorites}
-        />
-      )}
-      {page === "/fav" && (
-        <FavIcon
-          sku={sku}
-          name={name}
-          addToFavorites={addToFavorites}
-          deleteFavorites={deleteFavorites}
-          page={page}
-          productsFavorites={productsFavorites}
-        />
-      )}
-      {page === "/fav" && (
-        <Button
-          onClick={onBtnClick}
-          color="black"
-          text="Add to cart"
-          hoverColor="#f14b31"
         />
       )}
 
-      {page === "/" && (
+      {showBuyBtn && (
         <Button
           onClick={onBtnClick}
-          color="black"
-          text="Add to cart"
-          hoverColor="#f14b31"
+          color={disabled ? "grey" : "black"}
+          text={disabled ? "ADDED" : "Add to cart"}
+          hoverColor={disabled ? "grey" : "#f14b31"}
+          disabled={disabled}
         />
       )}
-      {page === "/cart" && (
+
+      {showDelBtn && (
         <Button
           onClick={deleteItem}
           color="black"
@@ -94,7 +91,6 @@ Product.propTypes = {
   addToFavorites: PropTypes.func,
   deleteFavorites: PropTypes.func,
   productsFavorites: PropTypes.array,
-  page: PropTypes.string,
 };
 
 export default Product;

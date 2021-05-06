@@ -41,7 +41,6 @@ FavIcon.propTypes = {
   addToFavorites: PropTypes.func,
   deleteFavorites: PropTypes.func,
   productsFavorites: PropTypes.array,
-  page: PropTypes.string,
 };
 
 export default FavIcon;

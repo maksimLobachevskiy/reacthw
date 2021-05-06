@@ -22,7 +22,12 @@ const Button = (props) => {
   const classes = useStyles(props);
 
   return (
-    <button type="button" className={classes.modalBtn} onClick={props.onClick}>
+    <button
+      type="button"
+      className={classes.modalBtn}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.text}
     </button>
   );
