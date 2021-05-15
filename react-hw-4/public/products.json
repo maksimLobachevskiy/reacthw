@@ -1,0 +1,73 @@
+﻿[
+  {
+    "name": "Lenovo IdeaPad Flex 5",
+    "price": 500,
+    "imgUrl": "images/lenovo.webp",
+    "sku": 1,
+    "color": "grey"
+  },
+
+  {
+    "name": "Asus ROG Strix",
+    "price": 1000,
+    "imgUrl": "images/asus.png",
+    "sku": 2,
+    "color": "red"
+  },
+  {
+    "name": "Apple MacBook Air 13",
+    "price": 1500,
+    "imgUrl": "images/apple.png",
+    "sku": 3,
+    "color": "gold"
+  },
+  {
+    "name": "HP Spectre x360 Convertible",
+    "price": 1500,
+    "imgUrl": "images/hp.png",
+    "sku": 4,
+    "color": "grey"
+  },
+  {
+    "name": "Acer Predator Helios 300",
+    "price": 900,
+    "imgUrl": "images/predator.png",
+    "sku": 5,
+    "color": "black"
+  },
+  {
+    "name": "Dell Alienware",
+    "price": 2500,
+    "imgUrl": "images/alienware.png",
+    "sku": 6,
+    "color": "black"
+  },
+  {
+    "name": "Acer Swift 3",
+    "price": 1100,
+    "imgUrl": "images/swift.png",
+    "sku": 7,
+    "color": "blue"
+  },
+  {
+    "name": "Acer ConceptD 3 Ezel",
+    "price": 3000,
+    "imgUrl": "images/conceptd.png",
+    "sku": 8,
+    "color": "white"
+  },
+  {
+    "name": "HP Pavilion 14",
+    "price": 800,
+    "imgUrl": "images/hppink.png",
+    "sku": 9,
+    "color": "pink"
+  },
+  {
+    "name": "Acer Aspire 5",
+    "price": 700,
+    "imgUrl": "images/acer.png",
+    "sku": 10,
+    "color": "silver"
+  }
+]
