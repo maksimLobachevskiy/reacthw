@@ -43,12 +43,17 @@ const App = ({
       const newCard = items.filter((card) => card.sku === currentId);
       const [{ ...cardAdd }] = newCard;
       addCardsCart(cardAdd);
+      localStorage.setItem("cart", JSON.stringify([...productsCart, cardAdd]));
       modalOpen(false);
     }
   };
 
   const deleteProduct = (currentId) => {
     deleteFromCart(currentId);
+    localStorage.setItem(
+      "cart",
+      JSON.stringify([...productsCart.filter((card) => card.sku !== currentId)])
+    );
     modalCartOpen(false);
   };
 

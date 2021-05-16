@@ -4,7 +4,9 @@ const initialStore = {
   currentName: null,
   modalShow: false,
   modalShowCart: false,
-  productsCart: [],
+  productsCart: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
   productsFavorites: localStorage.getItem("favorites")
     ? JSON.parse(localStorage.getItem("favorites"))
     : [],
