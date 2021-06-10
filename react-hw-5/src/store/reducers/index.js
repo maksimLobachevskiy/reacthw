@@ -7,6 +7,7 @@ import {
 import { productsReducer } from "../products/reducer";
 import { modalShowReducer, modalShowCartReducer } from "../modal/reducer";
 import { productsFavoritesReducer } from "../favorites/reducer";
+import { getFormDataReducer } from "../checkout/reducer";
 
 const reducer = combineReducers({
   currentId: currentIdReducer,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   modalShow: modalShowReducer,
   modalShowCart: modalShowCartReducer,
   productsCart: productsCartReducer,
-  productsFavorites: productsFavoritesReducer
+  productsFavorites: productsFavoritesReducer,
+  formValues: getFormDataReducer
 });
 
 export default reducer;

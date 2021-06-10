@@ -3,14 +3,15 @@ import Product from "../../components/products/Product";
 import { createUseStyles } from "react-jss";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import CheckoutForm from "../../components/checkout/CheckoutForm";
 
 const useStyles = createUseStyles({
   producList: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-around",
-  },
+    justifyContent: "space-around"
+  }
 });
 
 const Cart = (props) => {
@@ -27,17 +28,26 @@ const Cart = (props) => {
       showDelBtn={true}
     />
   ));
-  return <ul className={styles.producList}>{cards}</ul>;
+  if (productsCart.length !== 0) {
+    return (
+      <>
+        <ul className={styles.producList}>{cards}</ul>
+        <CheckoutForm />
+      </>
+    );
+  } else {
+    return <h2>No products added to the Cart</h2>;
+  }
 };
 
 Cart.propTypes = {
   deleteProduct: PropTypes.func,
-  items: PropTypes.array,
+  items: PropTypes.array
 };
 
 const mapStoreToProps = ({ productsCart }) => {
   return {
-    productsCart,
+    productsCart
   };
 };
 export default connect(mapStoreToProps)(Cart);

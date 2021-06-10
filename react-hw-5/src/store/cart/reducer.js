@@ -4,6 +4,7 @@ import {
   ADD_CURRENT_NAME,
   DELETE_FROM_CART
 } from "./constants";
+import { DELETE_ALL_PRODUCTS } from "../checkout/constants";
 
 const initialStore = {
   currentId: null,
@@ -40,18 +41,17 @@ export const currentNameReducer = (
 };
 
 export const productsCartReducer = (
-  productsCartFromStore = initialStore.productsCart,
+  store = initialStore.productsCart,
   action
 ) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...productsCartFromStore, action.payload];
+      return [...store, action.payload];
     case DELETE_FROM_CART:
-      return [
-        ...productsCartFromStore.filter((card) => card.sku !== action.payload)
-      ];
-
+      return [...store.filter((card) => card.sku !== action.payload)];
+    case DELETE_ALL_PRODUCTS:
+      return (store = action.payload);
     default:
-      return productsCartFromStore;
+      return store;
   }
 };
