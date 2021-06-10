@@ -4,17 +4,19 @@ import Modal from "./components/modal/Modal";
 import Routes from "./components/routes/Routes";
 import Button from "./components/button/Button";
 import { connect } from "react-redux";
+import { modalShowAction, modalCartShowAction } from "./store/modal/actions";
+import { loadProductsAction } from "./store/products/actions";
 import {
-  loadProductsAction,
-  modalShowAction,
-  modalCartShowAction,
   addToCartAction,
   deleteFromCartAction,
-  addToFavoritesAction,
-  deleteFromFavoritesAction,
   addCurrentIdAction,
-  addCurrentNameAction,
-} from "./actions/actions";
+  addCurrentNameAction
+} from "./store/cart/actions";
+
+import {
+  addToFavoritesAction,
+  deleteFromFavoritesAction
+} from "./store/favorites/actions";
 
 const App = ({
   items,
@@ -32,7 +34,7 @@ const App = ({
   addFavorites,
   deleteFromFavorites,
   currentName,
-  currentId,
+  currentId
 }) => {
   useEffect(() => {
     loadProducts();
@@ -92,13 +94,6 @@ const App = ({
     addCurrentId(cardAdd.sku);
   };
 
-  const modalClose = () => {
-    modalOpen(false);
-  };
-  const modalCloseCart = () => {
-    modalCartOpen(false);
-  };
-
   return (
     <div className={styles.App}>
       <Routes
@@ -114,7 +109,7 @@ const App = ({
       {modalShow && (
         <Modal
           modalOne={true}
-          onClick={modalClose}
+          onClick={() => modalOpen(false)}
           header={currentName}
           closeButton={true}
           text={`Do you want to buy ${currentName}?`}
@@ -122,13 +117,13 @@ const App = ({
             <>
               <Button
                 onClick={() => addToCart(currentId)}
-                text="Ok"
-                color="#d64531"
+                text='Ok'
+                color='#d64531'
               />
               <Button
-                text="Cancel"
-                color="#d64531"
-                onClick={() => modalClose()}
+                text='Cancel'
+                color='#d64531'
+                onClick={() => modalOpen(false)}
               />
             </>
           }
@@ -137,22 +132,22 @@ const App = ({
       {modalShowCart && (
         <Modal
           modalOne={true}
-          onClick={modalCloseCart}
+          onClick={() => modalCartOpen(false)}
           header={"Do you want to delete this item?"}
           closeButton={true}
           text={"The item will be removed from your cart! Do you confirm it?"}
           actions={
             <>
               <Button
-                text="OK"
-                color="#d64531"
+                text='OK'
+                color='#d64531'
                 onClick={() => deleteProduct(currentId)}
               />
 
               <Button
-                text="CANCEL"
-                color="#d64531"
-                onClick={() => modalCloseCart()}
+                text='CANCEL'
+                color='#d64531'
+                onClick={() => modalCartOpen(false)}
               />
             </>
           }
@@ -170,6 +165,7 @@ const mapStoreToProps = ({
   productsFavorites,
   currentId,
   currentName,
+  deleteFromCart
 }) => {
   return {
     items,
@@ -179,6 +175,7 @@ const mapStoreToProps = ({
     productsFavorites,
     currentId,
     currentName,
+    deleteFromCart
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -191,7 +188,7 @@ const mapDispatchToProps = (dispatch) => {
     addFavorites: (cardAdd) => dispatch(addToFavoritesAction(cardAdd)),
     deleteFromFavorites: (sku) => dispatch(deleteFromFavoritesAction(sku)),
     addCurrentId: (sku) => dispatch(addCurrentIdAction(sku)),
-    addCurrentName: (name) => dispatch(addCurrentNameAction(name)),
+    addCurrentName: (name) => dispatch(addCurrentNameAction(name))
   };
 };
 
