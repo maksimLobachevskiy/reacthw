@@ -1,0 +1,31 @@
+.header {
+  background-color: #000;
+
+  width: 100%;
+  .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    .navMenu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      padding: 15px;
+      text-transform: uppercase;
+
+      .menuItem {
+        padding: 15px;
+        .menuLink {
+          color: #fff;
+          text-decoration: none;
+          &.active {
+            border-bottom: 1px solid #f14b31;
+          }
+          &:hover {
+            border-bottom: 1px solid #f14b31;
+          }
+        }
+      }
+    }
+  }
+}
