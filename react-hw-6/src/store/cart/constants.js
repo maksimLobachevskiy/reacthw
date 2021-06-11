@@ -1,0 +1,4 @@
+export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_CURRENT_ID = "ADD_CURRENT_ID";
+export const ADD_CURRENT_NAME = "ADD_CURRENT_NAME";
+export const DELETE_FROM_CART = "DELETE_FROM_CART";
